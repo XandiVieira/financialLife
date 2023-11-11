@@ -1,0 +1,51 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://${DB_HOST}/${DB_NAME}?createDatabaseIfNotExist=true
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
+    driver-class-name: org.postgresql.Driver
+  jpa:
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
+    hibernate:
+      ddl-auto: update
+    show_sql: true
+    properties:
+      hibernate:
+        format_sql: true
+    database: postgresql
+    mail:
+      host: ${MAIL_HOST}
+      port: ${MAIL_PORT}
+      username: ${MAIL_USERNAME}
+      password: ${MAIL_PASSWORD}
+      protocol: ${MAIL_PROTOCOL}
+      properties:
+        mail:
+          smtp:
+            auth: true
+            starttls:
+              enable: true
+    auditing:
+      enabled: true
+      auditor-aware-ref: ${AUDITOR_NAME}
+
+base-url: ${BASE_URL}${PORT}
+
+jwt:
+  secret: ${JWT_SECRET}
+  expiration: ${JWT_EXPIRATION}
+
+password-reset:
+  token-expiration-time: ${PASSWORD_TOKEN_EXPIRATION_TIME_IN_MINUTES}
+
+initial-user-password: ${INITIAL_USER_PASSWORD}
+
+cors:
+  allowed-origin: ${CORS_ALLOWED_ORIGIN_LOCAL}
+
+server:
+  contextPath: /
+  port: ${PORT}
+
+client:
+  name: {CLIENT_NAME}
